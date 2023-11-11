@@ -288,12 +288,12 @@ form input, form textarea{
     border-radius: 10px
 }
 
-form button{
+form input{
     color: #332404;
     border-color: #332404;
     
 }
-form button:hover{
+form input:hover{
     background: #332404;
     color: white;
     transition: 0.2s;
