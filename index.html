@@ -10,20 +10,23 @@
 </head>
 <body>
 <!--HOME PAGE-->
-<section class="header">
-	<div class="banner">
-	   <div class="navbar">
+<header>  
+    <div class="navbar">
                <img src="logo.png" class="logo">
            <div class="nav-links">
                <ul>
-                   <li><a href="#">Home</a></li>
-                   <li><a href="#">Flavours</a></li>
-                   <li><a href="#">Stores</a></li>
-                   <li><a href="#">Contact</a></li>
-                   <li><a href="#">About Us</a></li>
+                   <li><a href="#home">Home</a></li>
+                   <li><a href="#flav">Flavours</a></li>
+                   <li><a href="#str">Stores</a></li>
+                   <li><a href="#con">Contact</a></li>
+                   <li><a href="#sls">Sales</a></li>
+                   <li><a href="#exp">Experiences</a></li>
                </ul>
             </div>
-        </div>
+    </div>
+</header>
+<section class="home" id="home">
+	<div class="banner">
         <div class="content">
             <h1>COFFEE LIKE NEVER BEFORE</h1>
             <p>We make the best coffee. There's no doubt about it.</p>
@@ -36,7 +39,7 @@
 	</div>
 </section>
 <!--FLAVOURS-->
-    <section class="flavours">
+    <section class="flavours" id="flav">
         <h1>FLAVOURS</h1>
         <p>Taste the uniqueness of COFFEE.</p>
         
@@ -56,7 +59,7 @@
         </div>
 </section>
 <!--STORES SECTION-->
-<section class="stores">
+<section class="stores" id="str">
     <h5>STORES</h5>
     <p1>Come and try our coffee!</p1>
             <div class="row1">
@@ -76,37 +79,84 @@
 </section>
 
 <!--CONTACT-->
-<section class="contact">
+<section class="contact" id="con">
     <h6>GET IN TOUCH</h6>
-    <p2>Tell us anything you'd like!</p2>
-  <form ref="form" @submit.prevent="sendEmail">
-    <label>Name</label>
-    <input type="text" name="user_name">
-    <label>Email</label>
-    <input type="email" name="user_email">
-    <label>Message</label>
-    <textarea name="message"></textarea>
-    <input type="submit" value="Send">
-  </form>
+    <p2>Form coming soon!</p2>
+</section>
+<!--SALES-->
+<section class="sales" id="sls">
+    <h7>SALES</h7>
+    <div></div>
+    <p3>See how we have grown over the past years</p3>
+    <div1>
+        <canvas id="myChart"></canvas>
+    </div1>
 </section>
     
+<!--experiences-->
+<section class="experiences" id="exp">
+    <h1>EXPERIENCES</h1>
+    <p>Click on the dropdown below to find out from our employee how they spent their time at COFFEE.</p>
+    <div class="wrapper">
+        <div class="collapsible">
+                <input type="checkbox" id="collapsible-head">
+            <label for="collapsible-head">My first time making a website</label>
+            <div class="collapsible-text">
+                <h8>Website Development</h8>
+                <div></div>
+                <p4>
+                    Website development has always been one of my most desired areas in programming. When I started creating this website, I thought that it would be extremely difficult to make sure my website comes together. However, fortunately, with my background experience in programming and design, I was able to bring my imagination to reality. But that does not mean that I was able to complete this with no pressure(Read more in the next dropdown).This website not only showcases my ability in programming and design, but also displays my adaptability from one coding language to another. I was quite astonished at how fast I was able to pick up CSS and JS. There were challenges especially with the contact form. I tried to import the contact form pre-made by smtp.js. However, there seemed to be a problem in the package itself. Many people claimed that the package was out of date and wasn't supported by the developer. So I tried to switch the source of the contact form but it just failed to work. I have yet to know why. I hope that one day I will understand how to properly implement contact forms, but until then, contact forms are coming soon(not really). Other than that, I had silly mistakes that I actually did not know where possible to make! I thought that you could use (h1) for every single heading, but I realized that since my website demands different styles for the different headings, I had to change to heading term to (h2, h3, h4 and so on.) I did not know that this existed for a full 3 days as I was confused at why my section 2 heading was the same as the section 1 heading. However, what matters is that I learnt that you can stick with the same term(h1) if you wanted to format your headings, or change your terms(to h2, h3 and h4). Not only that but the fact that I had to constantly add semi-colons(;) after each line in CSS also caught me off-guard. Sometimes my website wouldn't even run if I had missed one of those. But right now, I am happy that the website is functional!!!! :D          
+                </p4>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="footer">
+    <img src="logo.png" class=logo>
+    <div></div>
+    <p5>All Coffees Reserved</p5>
+</section>
 
+<script type="text/javascript">
+    window.addEventListener("scroll", function(){
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scroll);
+    })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-import emailjs from '@emailjs/browser';
+  const ctx = document.getElementById('myChart');
 
-export default {
-  methods: {
-    sendEmail() {
-      emailjs.sendForm('service_mcdtzls', 'template_61aopts', this.$refs.form, 'ZI2wAa386MnSvciNt')
-        .then((result) => {
-            console.log('SUCCESS!', result.text);
-        }, (error) => {
-            console.log('FAILED...', error.text);
-        });
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['2000', '2005', '2010', '2015', '2020', '2025(Estimated)'],
+      datasets: [{
+        label: '# of Sales',
+        data: [450, 1250, 850, 2250, 4500, 5000],
+        borderWidth: 1,
+          backgroundColor: '#332404',
+      },
+      {
+        label: '# of Employees',
+        data: [30, 130, 530, 1123, 2500, 4781],
+        borderWidth: 1,
+          backgroundColor: '#7a1101',
+      },]
+    },
+    options: {
+      scales: {
+          aspectRatio: 1,
+          x: {
+              max:400
+          },
+        y: {
+          max:5000
+        }
+      }
     }
-  }
-}
+  });
 </script>
 </body>
 </html>
